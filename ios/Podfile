@@ -38,4 +38,5 @@ target 'ReachOut' do
     )
   end
   pod 'RNCPushNotificationIOS', :path => '../node_modules/@react-native-community/push-notification-ios'
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 end
