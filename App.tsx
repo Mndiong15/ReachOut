@@ -1,16 +1,15 @@
-import React, {useEffect, useState} from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {ContactProvider} from './src/context/ContactContext';
-import {HomeScreen} from './src/screens/HomeScreen';
-import {AddContactScreen} from './src/screens/AddContactScreen';
-import {SummaryScreen} from './src/screens/SummaryScreen';
-import {SettingsScreen} from './src/screens/SettingsScreen';
-import {RootStackParamList} from './src/navigation/types';
-import {SettingsProvider} from './src/context/SettingsContext';
-import {OnboardingScreen} from './src/screens/OnboardingScreen';
-import {checkOnboardingStatus} from './src/utils/onboarding';
+// App.tsx
+import React, { useEffect, useState } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SplashScreen from 'react-native-splash-screen';
+import { RootStackParamList } from './src/navigation/types';
+import { OnboardingScreen } from './src/screens/OnboardingScreen';
+import { TabNavigator } from './src/navigation/TabNavigator';
+import { ContactProvider } from './src/context/ContactContext';
+import { SettingsProvider } from './src/context/SettingsContext';
+import { NotificationProvider } from './src/context/NotificationContext';
+import { checkOnboardingStatus } from './src/utils/onboarding';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -41,41 +40,26 @@ const App = () => {
   return (
     <SettingsProvider>
       <ContactProvider>
-        <NavigationContainer>
-          <Stack.Navigator
-            initialRouteName={hasCompletedOnboarding ? 'Home' : 'Onboarding'}
-            screenOptions={{
-              headerStyle: {
-                backgroundColor: '#007AFF',
-              },
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              },
-            }}>
-            <Stack.Screen name="Onboarding" component={OnboardingScreen} />
-            <Stack.Screen
-              name="Home"
-              component={HomeScreen}
-              options={{title: 'ReachOut'}}
-            />
-            <Stack.Screen
-              name="AddContact"
-              component={AddContactScreen}
-              options={{title: 'Add Contact'}}
-            />
-            <Stack.Screen
-              name="Summary"
-              component={SummaryScreen}
-              options={{title: 'Summary'}}
-            />
-            <Stack.Screen
-              name="Settings"
-              component={SettingsScreen}
-              options={{title: 'Settings'}}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
+        <NotificationProvider>
+          <NavigationContainer>
+            <Stack.Navigator
+              screenOptions={{
+                headerShown: false,
+                animation: 'fade',
+              }}
+              initialRouteName={hasCompletedOnboarding ? "MainTabs" : "Onboarding"}
+            >
+              <Stack.Screen 
+                name="Onboarding" 
+                component={OnboardingScreen} 
+              />
+              <Stack.Screen 
+                name="MainTabs" 
+                component={TabNavigator} 
+              />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </NotificationProvider>
       </ContactProvider>
     </SettingsProvider>
   );

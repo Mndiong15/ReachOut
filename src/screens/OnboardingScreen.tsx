@@ -65,7 +65,7 @@ export const OnboardingScreen = () => {
       await AsyncStorage.setItem(ONBOARDING_KEY, 'true');
       navigation.reset({
         index: 0,
-        routes: [{ name: 'Home' }],
+        routes: [{ name: 'MainTabs' }],
       });
     } catch (error) {
       console.error('Error saving onboarding status:', error);

@@ -1,12 +1,18 @@
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import { NavigatorScreenParams } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 
-export type RootStackParamList = {
-  Onboarding: undefined;
+export type TabParamList = {
   Home: undefined;
-  AddContact: undefined;
+  Add: undefined;
   Summary: undefined;
   Settings: undefined;
 };
 
-export type RootStackNavigationProp =
-  NativeStackNavigationProp<RootStackParamList>;
+export type RootStackParamList = {
+  Onboarding: undefined;
+  MainTabs: NavigatorScreenParams<TabParamList>;
+};
+
+export type RootStackNavigationProp = NativeStackNavigationProp<RootStackParamList>;
+export type TabNavigationProp = BottomTabNavigationProp<TabParamList>;
