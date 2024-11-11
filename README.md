@@ -23,7 +23,3 @@ We may update this Privacy Policy from time to time. Any changes will be posted 
 
 ### 6. Contact Us
 If you have any questions about this Privacy Policy, please contact us at mndiong15@gmail.com.
-
----
-
-This policy ensures that users understand that ReachOut is designed with privacy in mind, storing data locally and not accessing or sharing any personal information.
