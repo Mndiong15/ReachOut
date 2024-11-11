@@ -1,79 +1,25 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+## Privacy Policy for ReachOut
 
-# Getting Started
+**Last Updated:** 11/11/2024
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+ReachOut is committed to protecting your privacy. This Privacy Policy explains how we handle your information when you use our app. By using ReachOut, you agree to the terms outlined below.
 
-## Step 1: Start the Metro Server
+### 1. Data Collection
+ReachOut does not collect, store, or share any personal data on servers. All data, including contact information, reminders, and communication logs, is stored locally on your device. This means that your information remains private and inaccessible to anyone else, including the developer.
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+### 2. Permissions Requested
+To provide its functionality, ReachOut requests access to the following permissions:
+- **Contacts:** This permission allows you to import contacts into the app for easier reminder setup. ReachOut does not upload or share your contact information with any external services.
+- **Phone and SMS:** ReachOut allows you to call or text contacts directly from the app. This access is limited to enabling direct communication from within the app and does not record or transmit call or message data.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+### 3. No Data Sharing
+Since ReachOut does not collect or store your data on servers, no data is ever shared with third parties. All data is kept on your device, and ReachOut has no access to your information.
 
-```bash
-# using npm
-npm start
+### 4. Security
+As all data is stored locally on your device, it is protected by your device’s security settings. ReachOut recommends that you use device security measures, such as passwords or biometric authentication, to safeguard your data.
 
-# OR using Yarn
-yarn start
-```
+### 5. Changes to This Policy
+We may update this Privacy Policy from time to time. Any changes will be posted within the app, and your continued use of ReachOut after any updates means you accept the revised policy.
 
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+### 6. Contact Us
+If you have any questions about this Privacy Policy, please contact us at mndiong15@gmail.com.
