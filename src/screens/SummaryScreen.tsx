@@ -7,14 +7,19 @@ import {
   RefreshControl,
   TouchableOpacity,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useContacts } from '../context/ContactContext';
 import { ContactCard } from '../components/ContactCard';
 import { getTimeUntilNext } from '../utils/dateUtils';
 import { Contact } from '../types/contact';
+import { RootStackParamList } from '../navigation/types';
 
 type SortOption = 'name' | 'nextReachOut';
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 export const SummaryScreen = () => {
+  const navigation = useNavigation<NavigationProp>();
   const { state, markAsReachedOut } = useContacts();
   const [refreshing, setRefreshing] = useState(false);
   const [sortBy, setSortBy] = useState<SortOption>('nextReachOut');
@@ -34,6 +39,10 @@ export const SummaryScreen = () => {
 
   const handleReachOut = async (contact: Contact) => {
     await markAsReachedOut(contact.id);
+  };
+
+  const handleContactPress = (contactId: string) => {
+    navigation.navigate('ContactDetail', { contactId });
   };
 
   const onRefresh = async () => {
@@ -57,6 +66,18 @@ export const SummaryScreen = () => {
       </View>
     );
   }
+
+  const renderContactCard = ({ item }: { item: Contact }) => (
+    <TouchableOpacity 
+      onPress={() => handleContactPress(item.id)}
+      activeOpacity={0.7}
+    >
+      <ContactCard
+        contact={item}
+        onReachOut={() => handleReachOut(item)}
+      />
+    </TouchableOpacity>
+  );
 
   return (
     <View style={styles.container}>
@@ -84,19 +105,17 @@ export const SummaryScreen = () => {
       <FlatList
         data={sortedContacts}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <ContactCard
-            contact={item}
-            onReachOut={() => handleReachOut(item)}
-          />
-        )}
+        renderItem={renderContactCard}
         refreshControl={
           <RefreshControl
             refreshing={refreshing}
             onRefresh={onRefresh}
           />
         }
-        contentContainerStyle={styles.listContainer}
+        contentContainerStyle={[
+          styles.listContainer,
+          sortedContacts.length === 0 && styles.emptyListContainer
+        ]}
         ListEmptyComponent={
           <View style={styles.emptyContainer}>
             <Text style={styles.emptyText}>No contacts yet</Text>
@@ -120,6 +139,11 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     padding: 16,
+    paddingBottom: 100, // Add extra padding at bottom for tab bar
+  },
+  emptyListContainer: {
+    flex: 1,
+    justifyContent: 'center',
   },
   errorText: {
     color: '#FF3B30',

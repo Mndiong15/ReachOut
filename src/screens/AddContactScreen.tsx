@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/types';
-import { Contact, FrequencyType } from '../types/contact';
+import { DeviceContact, FrequencyType } from '../types/contact';
 import { useContacts } from '../context/ContactContext';
 import Contacts from 'react-native-contacts';
 import { check, request, PERMISSIONS, RESULTS } from 'react-native-permissions';
@@ -24,16 +24,6 @@ type AddContactScreenProps = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'AddContact'>;
 };
 
-interface DeviceContact {
-  recordID: string;
-  givenName: string;
-  familyName: string;
-  displayName?: string;
-  phoneNumbers: Array<{
-    label: string;
-    number: string;
-  }>;
-}
 
 interface ContactImportState {
   isModalVisible: boolean;
@@ -118,6 +108,7 @@ export const AddContactScreen = ({ navigation }: AddContactScreenProps) => {
         frequency,
         reminderEnabled,
         lastReachedOut: new Date().toISOString(),
+        phoneNumbers: []
       });
 
       Alert.alert(
@@ -148,6 +139,10 @@ export const AddContactScreen = ({ navigation }: AddContactScreenProps) => {
             frequency,
             reminderEnabled,
             lastReachedOut: new Date().toISOString(),
+            phoneNumbers: contact.phoneNumbers?.map(p => ({
+              label: p.label || 'mobile',
+              number: p.number,
+            })), // Map phone numbers to our internal format
           });
         }
       }

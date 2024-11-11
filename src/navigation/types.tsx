@@ -12,6 +12,8 @@ export type TabParamList = {
 export type RootStackParamList = {
   Onboarding: undefined;
   MainTabs: NavigatorScreenParams<TabParamList>;
+  ContactDetail: { contactId: string };
+  AddContact: undefined
 };
 
 export type RootStackNavigationProp = NativeStackNavigationProp<RootStackParamList>;

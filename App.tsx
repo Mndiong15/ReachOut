@@ -1,15 +1,16 @@
 // App.tsx
-import React, { useEffect, useState } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React, {useEffect, useState} from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import SplashScreen from 'react-native-splash-screen';
-import { RootStackParamList } from './src/navigation/types';
-import { OnboardingScreen } from './src/screens/OnboardingScreen';
-import { TabNavigator } from './src/navigation/TabNavigator';
-import { ContactProvider } from './src/context/ContactContext';
-import { SettingsProvider } from './src/context/SettingsContext';
-import { NotificationProvider } from './src/context/NotificationContext';
-import { checkOnboardingStatus } from './src/utils/onboarding';
+import {RootStackParamList} from './src/navigation/types';
+import {OnboardingScreen} from './src/screens/OnboardingScreen';
+import {TabNavigator} from './src/navigation/TabNavigator';
+import {ContactProvider} from './src/context/ContactContext';
+import {SettingsProvider} from './src/context/SettingsContext';
+import {NotificationProvider} from './src/context/NotificationContext';
+import {checkOnboardingStatus} from './src/utils/onboarding';
+import {ContactDetailScreen} from './src/screens/ContactDetailScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -47,15 +48,22 @@ const App = () => {
                 headerShown: false,
                 animation: 'fade',
               }}
-              initialRouteName={hasCompletedOnboarding ? "MainTabs" : "Onboarding"}
-            >
-              <Stack.Screen 
-                name="Onboarding" 
-                component={OnboardingScreen} 
-              />
-              <Stack.Screen 
-                name="MainTabs" 
-                component={TabNavigator} 
+              initialRouteName={
+                hasCompletedOnboarding ? 'MainTabs' : 'Onboarding'
+              }>
+              <Stack.Screen name="Onboarding" component={OnboardingScreen} />
+              <Stack.Screen name="MainTabs" component={TabNavigator} />
+              <Stack.Screen
+                name="ContactDetail"
+                component={ContactDetailScreen}
+                options={{
+                  headerShown: true,
+                  title: 'Contact Details',
+                  headerTintColor: '#fff',
+                  headerStyle: {
+                    backgroundColor: '#007AFF',
+                  },
+                }}
               />
             </Stack.Navigator>
           </NavigationContainer>
